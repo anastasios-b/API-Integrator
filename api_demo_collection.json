@@ -1,0 +1,252 @@
+{
+    "info": {
+        "name": "API Demo Collection",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": "Collection for testing the three demo APIs"
+    },
+    "item": [
+        {
+            "name": "API 1 (Port 8081 - Query Param Auth)",
+            "item": [
+                {
+                    "name": "Get User (GET /user)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8081/user?demo-token=12345678",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8081",
+                            "path": [
+                                "user"
+                            ],
+                            "query": [
+                                {
+                                    "key": "demo-token",
+                                    "value": "12345678"
+                                }
+                            ]
+                        },
+                        "description": "Get user data using token in query parameter"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create User (POST /user)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"user_email\": \"john.doe@example.com\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:8081/user?demo-token=12345678",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8081",
+                            "path": [
+                                "user"
+                            ],
+                            "query": [
+                                {
+                                    "key": "demo-token",
+                                    "value": "12345678"
+                                }
+                            ]
+                        },
+                        "description": "Create a new user with token in query parameter"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Health Check (GET /)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8081/",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8081",
+                            "path": [
+                                ""
+                            ]
+                        },
+                        "description": "Health check endpoint"
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "API 2 (Port 8082 - Payload Auth)",
+            "item": [
+                {
+                    "name": "Health Check (GET /)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8082/",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8082",
+                            "path": [
+                                ""
+                            ]
+                        },
+                        "description": "Health check endpoint"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get User (POST /get-user)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"Demo-Token\": \"12345678\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:8082/get-user",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8082",
+                            "path": [
+                                "get-user"
+                            ]
+                        },
+                        "description": "Get user data with token in request payload"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update User (POST /update-user)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\\n    \\\"Demo-Token\\\": \\\"12345678\\\",\\n    \\\"name\\\": \\\"John\\\",\\n    \\\"surname\\\": \\\"Doe\\\",\\n    \\\"email\\\": \\\"john.doe@example.com\\\"\\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:8082/update-user",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8082",
+                            "path": [
+                                "update-user"
+                            ]
+                        },
+                        "description": "Update user data with token in request payload"
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "API 3 (Port 8083 - Header Auth)",
+            "item": [
+                {
+                    "name": "Health Check (GET /)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8083/",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8083",
+                            "path": [
+                                ""
+                            ]
+                        },
+                        "description": "Health check endpoint"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get User (GET /user)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Demo-Token",
+                                "value": "12345678"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8083/user",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8083",
+                            "path": [
+                                "user"
+                            ]
+                        },
+                        "description": "Get user data with token in header"
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}
