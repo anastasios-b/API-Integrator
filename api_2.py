@@ -10,9 +10,9 @@ CORS(app)  # Enable CORS for all routes
 def health_check():
     return jsonify({"message": "API 2 is on!"}), 200
 
-# Validate token inside POST JSON payload
-def validate_payload_token(payload):
-    return payload.get("Demo-Token") == "12345678"
+# Validate token from request headers
+def validate_header_token():
+    return request.headers.get("Demo-Token") == "12345678"
 
 
 # POST - get demo data
@@ -20,7 +20,7 @@ def validate_payload_token(payload):
 def get_data():
     payload = request.json or {}
 
-    if not validate_payload_token(payload):
+    if not validate_header_token():
         return jsonify({"error": "Unauthorized"}), 401
 
     response_data = {
@@ -37,7 +37,7 @@ def get_data():
 def submit():
     payload = request.json or {}
 
-    if not validate_payload_token(payload):
+    if not validate_header_token():
         return jsonify({"error": "Unauthorized"}), 401
 
     name = payload.get("name")

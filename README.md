@@ -73,25 +73,24 @@ Content-Type: application/json
 
 ### Authentication
 
-- **Method**: JSON Payload
-- **Field**: `Demo-Token`
+- **Method**: HTTP Header
+- **Header**: `Demo-Token`
 - **Valid Token**: `12345678`
 
 ### Endpoints
 
-#### POST /user (Get User Data)
+#### POST /get-user
 
 Retrieves user information.
 
 **Request:**
 
 ```http
-POST /user
+POST /get-user
 Content-Type: application/json
+Demo-Token: 12345678
 
-{
-    "Demo-Token": "12345678"
-}
+{}
 ```
 
 **Response (200 OK):**
@@ -104,18 +103,18 @@ Content-Type: application/json
 }
 ```
 
-#### POST /user (Submit User Data)
+#### POST /update-user
 
 Submits user information.
 
 **Request:**
 
 ```http
-POST /user
+POST /update-user
 Content-Type: application/json
+Demo-Token: 12345678
 
 {
-    "Demo-Token": "12345678",
     "name": "John",
     "surname": "Doe",
     "email": "john.doe@example.com"
@@ -193,10 +192,10 @@ curl -X POST -H "Content-Type: application/json" -d '{"first_name":"John","last_
 
 ```bash
 # GET user data
-curl -X POST -H "Content-Type: application/json" -d '{"Demo-Token":"12345678"}' http://localhost:8082/user
+curl -X POST -H "Content-Type: application/json" -H "Demo-Token: 12345678" -d '{}' http://localhost:8082/get-user
 
 # POST user data
-curl -X POST -H "Content-Type: application/json" -d '{"Demo-Token":"12345678","name":"John","surname":"Doe","email":"john.doe@example.com"}' http://localhost:8082/user
+curl -X POST -H "Content-Type: application/json" -H "Demo-Token: 12345678" -d '{"name":"John","surname":"Doe","email":"john.doe@example.com"}' http://localhost:8082/update-user
 ```
 
 ### Testing API 3
